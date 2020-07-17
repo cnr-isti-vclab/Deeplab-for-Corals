@@ -208,7 +208,7 @@ def computeLoss(loss_name, CE, w_for_GDL, tversky_alpha, tversky_beta, focal_tve
             loss = alpha * losses.GDL(predictions, labels, w_for_GDL) + (1.0 - alpha) * losses.surface_loss(labels, predictions)
         else:
             loss = losses.GDL(predictions, labels, w_for_GDL)
-    elif loss_name == "FOCAL TVERSKY":
+    elif loss_name == "FOCAL_TVERSKY":
         loss = losses.focal_tversky(predictions, labels, tversky_alpha, tversky_beta, focal_tversky_gamma)
     elif loss_name == "FOCAL+BOUNDARY":
         if epoch >= epochs_switch:
@@ -567,14 +567,14 @@ def main():
 
 
     # DATASET FOLDERS
-    images_dir_train = "D:\\ten-orthos-scripps\\mini_train_im"
-    labels_dir_train = "D:\\ten-orthos-scripps\\mini_train_lab"
+    images_dir_train = root_dir + '/' + 'train_im'
+    labels_dir_train = root_dir + '/' + 'train_lab'
 
-    images_dir_val = "D:\\ten-orthos-scripps\\mini_val_im"
-    labels_dir_val = "D:\\ten-orthos-scripps\\mini_val_lab"
+    images_dir_val = root_dir + '/' + 'val_im'
+    labels_dir_val = root_dir + '/' + 'val_lab'
 
-    images_dir_test = "D:\\ten-orthos-scripps\\mini_test_im"
-    labels_dir_test = "D:\\ten-orthos-scripps\\mini_test_lab"
+    images_dir_test = root_dir + '/' + 'test_im'
+    labels_dir_test = root_dir + '/' + 'test_lab'
 
     # LOAD EXPERIMENTS
 
@@ -668,4 +668,5 @@ def main():
 
 
 if __name__ == '__main__':
+    root_dir = '/workspace/data/ten-orthos-scripps'
     main()
